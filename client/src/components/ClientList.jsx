@@ -8,7 +8,9 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
   const { token } = useContext(AuthContext);
   const [editingId, setEditingId] = useState(null);
   const [editData, setEditData] = useState({});
-  const [visibleCreds, setVisibleCreds] = useState({}); // map client._id → boolean
+  const [visibleCreds, setVisibleCreds] = useState({}); // toggle view creds
+  const [showLoginEditPass, setShowLoginEditPass] = useState(false);
+  const [showEmailEditPass, setShowEmailEditPass] = useState(false);
 
   const toggleCreds = (id) => {
     setVisibleCreds((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -18,7 +20,7 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
     setEditingId(client._id);
     setEditData({
       ...client,
-      expiryDate: client.expiryDate?.split("T")[0],
+      expiryDate: client.expiryDate?.split("T")[0], // format for input type="date"
     });
   };
 
@@ -44,7 +46,11 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
     }
   };
 
-  const cancelEdit = () => setEditingId(null);
+  const cancelEdit = () => {
+    setEditingId(null);
+    setShowLoginEditPass(false);
+    setShowEmailEditPass(false);
+  };
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this client?")) return;
@@ -81,6 +87,39 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
                 onChange={handleEditChange}
                 placeholder="Hosting Provider"
               />
+
+              <div className="password-toggle">
+                <input
+                  name="loginCredentials"
+                  value={editData.loginCredentials}
+                  onChange={handleEditChange}
+                  type={showLoginEditPass ? "text" : "password"}
+                  placeholder="Hosting Login Credentials"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowLoginEditPass(!showLoginEditPass)}
+                >
+                  {showLoginEditPass ? "Hide" : "Show"}
+                </button>
+              </div>
+
+              <div className="password-toggle">
+                <input
+                  name="emailCredentials"
+                  value={editData.emailCredentials}
+                  onChange={handleEditChange}
+                  type={showEmailEditPass ? "text" : "password"}
+                  placeholder="Email Login Credentials"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowEmailEditPass(!showEmailEditPass)}
+                >
+                  {showEmailEditPass ? "Hide" : "Show"}
+                </button>
+              </div>
+
               <input
                 name="expiryDate"
                 type="date"
@@ -95,8 +134,12 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
                 placeholder="Renewal Charge"
               />
               <div className="client-actions">
-                <button className="save-btn" onClick={saveEdit}>Save</button>
-                <button className="cancel-btn" onClick={cancelEdit}>Cancel</button>
+                <button className="save-btn" onClick={saveEdit}>
+                  Save
+                </button>
+                <button className="cancel-btn" onClick={cancelEdit}>
+                  Cancel
+                </button>
               </div>
             </div>
           ) : (
@@ -117,7 +160,6 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
                   {new Date(client.expiryDate).toLocaleDateString()}
                 </span>{" "}
                 | ₹{client.renewalCharge}
-
                 {client.isExpired && (
                   <span className="badge expired-badge">❌ Expired</span>
                 )}
@@ -130,8 +172,12 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
 
               {visibleCreds[client._id] && (
                 <div className="client-creds">
-                  <p><strong>Hosting Login:</strong> {client.loginCredentials}</p>
-                  <p><strong>Email Login:</strong> {client.emailCredentials}</p>
+                  <p>
+                    <strong>Hosting Login:</strong> {client.loginCredentials}
+                  </p>
+                  <p>
+                    <strong>Email Login:</strong> {client.emailCredentials}
+                  </p>
                 </div>
               )}
 
@@ -139,8 +185,12 @@ export default function ClientList({ clients, onDelete, onUpdate }) {
                 <button onClick={() => toggleCreds(client._id)}>
                   {visibleCreds[client._id] ? "Hide Credentials" : "Show Credentials"}
                 </button>
-                <button className="edit-btn" onClick={() => startEdit(client)}>Edit</button>
-                <button className="delete-btn" onClick={() => handleDelete(client._id)}>Delete</button>
+                <button className="edit-btn" onClick={() => startEdit(client)}>
+                  Edit
+                </button>
+                <button className="delete-btn" onClick={() => handleDelete(client._id)}>
+                  Delete
+                </button>
               </div>
             </>
           )}
