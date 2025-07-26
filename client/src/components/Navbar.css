@@ -1,0 +1,124 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* Match login/register background */
+  padding: 14px 24px;
+  color: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Left section: logo + links */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Right section: user + button */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Logo link */
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0ea5e9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Navigation links */
+.nav-link {
+  font-size: 1rem;
+  color: #334155;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline hover effect */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #0ea5e9;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-logo:hover {
+  color: #0ea5e9;
+}
+
+/* User name */
+.nav-user {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* Logout button */
+.nav-btn {
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #0284c7;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
+}

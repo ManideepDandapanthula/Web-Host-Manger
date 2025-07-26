@@ -1,0 +1,76 @@
+.dashboard-container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  color: #0f172a;
+}
+
+.dashboard-header p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #475569;
+}
+
+.dashboard-header button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dashboard-header button:hover {
+  background-color: #2563eb;
+}
+
+.dashboard-section {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.dashboard-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+  text-align: center;
+}
+
+.dashboard-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.feature-card {
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.feature-card:hover {
+  background-color: #e0f2fe;
+  transform: translateY(-4px);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #334155;
+}

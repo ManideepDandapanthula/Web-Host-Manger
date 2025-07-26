@@ -1,0 +1,37 @@
+.clients-page h2 {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 16px;
+  border-left: 6px solid #0ea5e9;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+.clients-page {
+  padding: 24px;
+}
+
+.clients-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.clients-toggle button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clients-toggle button:hover {
+  background-color: #cbd5e1;
+}
+
+.clients-toggle .active {
+  background-color: #0ea5e9;
+  color: white;
+}

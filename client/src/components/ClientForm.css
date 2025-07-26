@@ -1,0 +1,77 @@
+.client-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background-color: #f1f5f9;
+}
+
+.client-form {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.client-form h3 {
+  text-align: center;
+  color: #0f172a;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.client-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.client-form input:focus {
+  border-color: #0ea5e9;
+}
+
+.client-form button {
+  background-color: #0ea5e9;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.client-form button:hover {
+  background-color: #0284c7;
+}
+
+.password-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-toggle input {
+  flex: 1;
+}
+
+.password-toggle button {
+  padding: 8px 12px;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.password-toggle button:hover {
+  background-color: #cbd5e1;
+}
